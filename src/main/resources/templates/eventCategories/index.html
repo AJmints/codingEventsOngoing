@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<table class="table table-striped">
+    <thread>
+        <tr>
+            <th>Category Name</th>
+        </tr>
+    </thread>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.name}"></td>
+    </tr>
+</table>
+
+<a type="submit" href="/eventCategories/create" class="btn btn-success">Create Category</a>
+<a type="submit" href="/eventCategories/delete" class="btn btn-success">Delete Category</a>
+
+</body>
+</html>
