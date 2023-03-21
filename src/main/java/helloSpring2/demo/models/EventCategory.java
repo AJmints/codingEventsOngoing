@@ -1,30 +1,23 @@
 package helloSpring2.demo.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.Size;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class EventCategory {
+public class EventCategory extends AbstractEntity{
 
-    @Id
-    @GeneratedValue
-    public int id;
+    private String name;
 
-    @Size(min = 2, max = 500, message = "Message required")
-    public String name;
-
-    public EventCategory(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @OneToMany(mappedBy = "eventCategory")
+    private final List<Event> events = new ArrayList<>();
 
     public EventCategory() {
     }
 
-    public int getId() {
-        return id;
+    public List<Event> getEvents() {
+        return events;
     }
 
     public String getName() {
@@ -33,5 +26,9 @@ public class EventCategory {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
     }
 }
